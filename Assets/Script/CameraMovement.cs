@@ -15,6 +15,7 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        LockCursor();
         playerTransform = FindObjectOfType<PlayerMovement>().transform;
     }
 
@@ -49,5 +50,11 @@ public class CameraMovement : MonoBehaviour
         Vector3 rotation = playerTransform.eulerAngles;
         rotation.y = transform.eulerAngles.y;
         playerTransform.eulerAngles = rotation; 
+    }
+
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
