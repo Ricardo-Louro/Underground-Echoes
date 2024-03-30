@@ -15,8 +15,12 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        LockCursor();
         playerTransform = FindObjectOfType<PlayerMovement>().transform;
+    }
+
+    private void OnEnable()
+    {
+        LockCursor();
     }
 
     // Update is called once per frame
