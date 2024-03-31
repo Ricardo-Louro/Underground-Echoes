@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private FootstepController footstepController;
     private Rigidbody rb;
     private Vector3 moveDirection;
     [SerializeField] private float moveSpeed;
 
     private void Start()
     {
+        footstepController = GetComponent<FootstepController>();
         rb = GetComponent<Rigidbody>();  
         moveDirection = Vector3.zero; 
     }
@@ -28,6 +30,11 @@ public class PlayerMovement : MonoBehaviour
                         Input.GetAxis("Horizontal") * transform.right;
 
         moveDirection = moveDirection.normalized;
+
+        if (moveDirection.magnitude >= 1)
+        {
+            footstepController.Footstep();
+        }
     }
 
     private void Move()
