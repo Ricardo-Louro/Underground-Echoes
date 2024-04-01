@@ -5,17 +5,19 @@ public class CameraMovement : MonoBehaviour
     private Transform playerTransform;
     [SerializeField] private float cameraHeight;
 
-    [SerializeField] private float mouseSensitivityX;
-    [SerializeField] private float mouseSensitivityY;
+    [SerializeField] public float mouseSensitivity;
 
     [SerializeField] private float minRotationX;
     [SerializeField] private float maxRotationX;
+
+    private Vector3 rotation;
 
 
     // Start is called before the first frame update
     private void Start()
     {
         playerTransform = FindObjectOfType<PlayerMovement>().transform;
+        rotation = transform.eulerAngles;
     }
 
     private void OnEnable()
@@ -39,14 +41,12 @@ public class CameraMovement : MonoBehaviour
     }
     private void SetRotation()
     {
-        Vector3 rotation = transform.eulerAngles;
+        rotation.y += Input.GetAxis("Mouse X") * mouseSensitivity;
+        rotation.x -= Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        rotation.y += Input.GetAxis("Mouse X") * (mouseSensitivityX * Time.deltaTime);
-        rotation.x -= Input.GetAxis("Mouse Y") * (mouseSensitivityY * Time.deltaTime);
+        rotation.x = Mathf.Clamp(rotation.x, minRotationX, maxRotationX);
 
-        rotation.x = Mathf.Clamp(minRotationX, rotation.x, maxRotationX);
-
-        transform.eulerAngles = rotation;
+        transform.rotation = Quaternion.Euler(rotation);
     }
 
     private void SetPlayerRotation()
