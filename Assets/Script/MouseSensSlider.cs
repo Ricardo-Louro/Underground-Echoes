@@ -19,17 +19,23 @@ public class MouseSensSlider : MonoBehaviour
         defaultValue = 2.0f;
         camMove = FindObjectOfType<CameraMovement>();
         slider = GetComponent<Slider>();
+        UpdateText();
     }
 
     public void UpdateSensitivity()
     {
         camMove.mouseSensitivity = slider.value;
-        tmp.text = Math.Round(slider.value , 1, MidpointRounding.AwayFromZero).ToString();
+        UpdateText();
     }
 
     public void ResetSensitivity()
     {
         slider.value = defaultValue;
         UpdateSensitivity();
+    }
+
+    private void UpdateText()
+    {
+        tmp.text = Math.Round(slider.value, 1, MidpointRounding.AwayFromZero).ToString();
     }
 }

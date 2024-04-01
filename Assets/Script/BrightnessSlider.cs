@@ -22,6 +22,7 @@ public class BrightnessSlider : MonoBehaviour
         defaultValue = 0f;
         profile = volume.profile;
         slider = GetComponent<Slider>();
+        UpdateText();
     }
 
     public void UpdateBrightness()
@@ -35,12 +36,17 @@ public class BrightnessSlider : MonoBehaviour
         lgg.gamma.value = gammaValue;
 
 
-        tmp.text = Math.Round(slider.value, 1, MidpointRounding.AwayFromZero).ToString();
+        UpdateText();
     }
 
     public void ResetBrightness()
-    { }
+    {
         slider.value = defaultValue;
         UpdateBrightness();
+    }
+
+    private void UpdateText()
+    {
+        tmp.text = Math.Round(slider.value, 1, MidpointRounding.AwayFromZero).ToString();
     }
 }
