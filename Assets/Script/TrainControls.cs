@@ -6,6 +6,6 @@ public class TrainControls : Interactible
 
     public override void Interact()
     {
-        //END GAME
+        Application.Quit();
     }
 }
