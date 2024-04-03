@@ -20,7 +20,11 @@ public class FootstepController : MonoBehaviour
         {
             footstepSource.pitch = Random.Range(0.8f, 1f);
             footstepSource.PlayOneShot(footstepClip);
-            flashlightAnimator.Play("FlashlightWalk");
+            
+            if(flashlightAnimator.gameObject.activeSelf)
+            {
+                flashlightAnimator.Play("FlashlightWalk");
+            }
             
             lastTimeStepped = Time.time;
         }
