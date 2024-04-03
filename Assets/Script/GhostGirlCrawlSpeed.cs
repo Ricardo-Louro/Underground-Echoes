@@ -4,6 +4,7 @@ public class GhostGirlCrawlSpeed : MonoBehaviour
 {
     private Rigidbody rb;
     [SerializeField] private float speed;
+    [SerializeField] private Transform maxDistance;
     
     private Vector3 direction;
 
@@ -14,6 +15,13 @@ public class GhostGirlCrawlSpeed : MonoBehaviour
         direction = new Vector3(0, 0, 1);
     }
 
+    private void Update()
+    {
+        if(transform.position.z >= maxDistance.position.z)
+        {
+            Destroy(gameObject);
+        }
+    }
     // Update is called once per frame
     private void FixedUpdate()
     {
