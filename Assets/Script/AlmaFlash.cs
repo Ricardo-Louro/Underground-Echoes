@@ -6,14 +6,23 @@ public class AlmaFlash : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioSource audioSource2;
 
+    private new Collider collider;
+
+    private void Start()
+    {
+        collider = GetComponent<Collider>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerMovement>() != null)
         {
+            collider.enabled = false;
+
             animator.enabled = true;
-            audioSource.PlayOneShot(clip);
+            audioSource.Play();
+            audioSource2.Play();
             Destroy(gameObject);
         }
     }

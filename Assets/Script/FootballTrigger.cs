@@ -3,9 +3,12 @@ using UnityEngine;
 public class FootballTrigger : MonoBehaviour
 {
     private Football football;
+    
+    private new Collider collider;
 
     private void Start()
     {
+        collider = GetComponent<Collider>();
         football = FindObjectOfType<Football>();
     }
 
@@ -13,6 +16,8 @@ public class FootballTrigger : MonoBehaviour
     {
         if(other.GetComponent<PlayerMovement>() != null)
         {
+            collider.enabled = false;
+
             football.TriggerFootballEvent();
             Destroy(gameObject);
         }

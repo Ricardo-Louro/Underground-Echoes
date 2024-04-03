@@ -12,9 +12,12 @@ SOUNDS:
 	Horror Ambiance from https://youtu.be/tmlZeYnfw7g?si=Gcg642rICig1r7Nz
 	Subway Sound from https://youtu.be/zS8AOpeM2Yg?si=f7cLOWF5PP8toZBW
 	Main Menu Theme from https://youtu.be/BzYPUjtEVqs?si=5mnY9_z3kNim5jcL
+	Jumpscare Sounds from https://youtu.be/MBsdB4ykpug?si=_c9-kGyukEKg4fmj	
+	Static from https://youtu.be/wf2Ojwq4gYU?si=sE2WJpox7TPFdeHi
 
 FONTS:
 	Title Font: https://www.dafont.com/pt/nightside.font
 	Text Font: https://fonts.google.com/specimen/Bebas+Neue
+
 
 Animations and Skinned model from https://www.mixamo.com/

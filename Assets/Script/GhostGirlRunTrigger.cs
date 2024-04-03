@@ -10,16 +10,21 @@ public class GhostGirlRunTrigger : MonoBehaviour
     [SerializeField] private float timer;
     private float timeTriggered;
 
+    private new Collider collider;
+
     // Start is called before the first frame update
     private void Start()
     {
         triggerDestroy = false;
+        collider = GetComponent<Collider>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerMovement>() != null)
         {
+            collider.enabled = false;
+
             ghostGirlRun.SetActive(true);
             audioSource.PlayOneShot(clip);
 
